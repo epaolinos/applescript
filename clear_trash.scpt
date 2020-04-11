@@ -1,9 +1,13 @@
 tell application "Finder"
+	-- we iterate files and sum their sizes without using 'size of trash' because
+	-- it works really inconsistently 
 	set trash_size to 0
 	set file_list to every item of trash
 	repeat with the_file in file_list
 		set trash_size to trash_size + (get size of the_file)
 	end repeat
+	
+	-- trash_size processing and dialog with user
 	if trash_size = 0 then
 		display dialog ("The Trash is completely empty now. See you later") buttons "See you" default button "See you"
 		return
@@ -19,8 +23,7 @@ tell application "Finder"
 	else
 		set metric to " B"
 	end if
-	display dialog ("The size of Trash is " & trash_size & metric & "
-Wanna empty?") buttons {"Nope", "Yep!"} default button "Yep!"
+	display dialog ("The size of Trash is " & trash_size & metric & "\nWanna empty?") buttons {"Nope", "Yep!"} default button "Yep!"
 	if result = {button returned:"Yep!"} then
 		try
 			set warns before emptying of trash to false
