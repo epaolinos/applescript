@@ -3,8 +3,8 @@ tell application "Finder"
 	-- it works really inconsistently 
 	set trashSize to 0
 	set fileList to every item of trash
-	repeat with aFile in fileList
-		set trashSize to trashSize + (get size of aFile)
+	repeat with theFile in fileList
+		set trashSize to trashSize + (get size of theFile)
 	end repeat
 	
 	-- trashSize processing and dialog with user
