@@ -23,7 +23,7 @@ tell application "Finder"
 	else
 		set metric to " B"
 	end if
-	display dialog ("The size of Trash is " & trash_size & metric & "\nWanna empty?") buttons {"Nope", "Yep!"} default button "Yep!"
+	display dialog ("The size of Trash is " & trash_size & metric & " Wanna empty?") buttons {"Nope", "Yep!"} default button "Yep!"
 	if result = {button returned:"Yep!"} then
 		try
 			set warns before emptying of trash to false
