@@ -1,5 +1,9 @@
-my openList(my chooseList())
-my collapseWindow()
+my main()
+
+on main()
+	my openList(my chooseList())
+	my collapseWindow()
+end main
 
 on openList(chosenList)
 	my sessionActivate()
@@ -37,23 +41,26 @@ on chooseList()
 5 — Skillets
 6 — Taizé
 7 — Romeo & Juliet" default answer "1"
-	set playList to (text returned of choice) as integer
-	if (playList = 0) then
+	set playList to text returned of choice
+	if (playList = "0") then
 		my closeSession()
-	else if (playList = 1) then
+	else if (playList = "1") then
 		return "https://music.yandex.ru/users/paulin2/playlists/3"
-	else if (playList = 2) then
+	else if (playList = "2") then
 		return "https://music.yandex.ru/users/paulin2/playlists/1006"
-	else if (playList = 3) then
+	else if (playList = "3") then
 		return "https://music.yandex.ru/users/paulin2/playlists/1005"
-	else if (playList = 4) then
+	else if (playList = "4") then
 		return "https://music.yandex.ru/users/paulin2/playlists/1004"
-	else if (playList = 5) then
+	else if (playList = "5") then
 		return "https://music.yandex.ru/users/paulin2/playlists/1000"
-	else if (playList = 6) then
+	else if (playList = "6") then
 		return "https://music.yandex.ru/users/paulin2/playlists/1003"
-	else if (playList = 7) then
+	else if (playList = "7") then
 		return "https://music.yandex.ru/album/1772514"
+	else
+		my main()
+		error number -128
 	end if
 end chooseList
 
@@ -65,8 +72,10 @@ end collapseWindow
 
 on closeSession()
 	tell application "Google Chrome"
-		set visible of first window whose first tab's URL contains "music.yandex.ru" to true
-		close first window
+		try
+			set visible of first window whose first tab's URL contains "music.yandex.ru" to true
+			close first window
+		end try
 		error number -128
 	end tell
 end closeSession
