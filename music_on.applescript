@@ -19,7 +19,7 @@ end openList
 on sessionActivate()
 	tell application "Google Chrome"
 		try
-			set visible of first window whose title contains "—" to true
+			set visible of first window whose first tab's URL contains "music.yandex.ru" to true
 		on error
 			make new window
 		end try
@@ -65,7 +65,7 @@ end collapseWindow
 
 on closeSession()
 	tell application "Google Chrome"
-		set visible of first window whose title contains "—" to true
+		set visible of first window whose first tab's URL contains "music.yandex.ru" to true
 		close first window
 		error number -128
 	end tell
