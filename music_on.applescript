@@ -65,8 +65,8 @@ on chooseList()
 end chooseList
 
 on collapseWindow()
-	tell application "System Events"
-		keystroke "m" using command down
+	tell application "Google Chrome"
+		set minimized of first window whose first tab's URL contains "music.yandex.ru" to true
 	end tell
 end collapseWindow
 
