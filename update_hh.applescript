@@ -1,6 +1,7 @@
 repeat 6 times
 	update()
-	delay 360
+	-- execute every 4 hours
+	delay 14400
 end repeat
 
 on update()
