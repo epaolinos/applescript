@@ -1,5 +1,7 @@
 repeat 6 times
-	update()
+	try
+		update()
+	end try
 	-- execute every 4 hours
 	delay 14400
 end repeat
